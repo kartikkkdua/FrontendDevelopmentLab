@@ -1,0 +1,95 @@
+.dashboard-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+    overflow: hidden;
+  }
+  
+  .blurred-circle {
+    position: fixed;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
+    filter: blur(100px);
+  }
+  
+  .top-right {
+    top: 0;
+    right: 0;
+    background-color: #1D2432;
+    opacity: 0.2;
+  }
+  
+  .bottom-left {
+    bottom: 0;
+    left: 0;
+    background-color: #3B82F6;
+    opacity: 0.1;
+  }
+  
+  .dashboard-box {
+    width: 100%;
+    max-width: 500px;
+    background: transparent;
+    text-align: center;
+    position: relative;
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .bot-icon {
+    color: #3B82F6;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    color: gray;
+    font-size: 0.9rem;
+  }
+  
+  .content {
+    margin-top: 2rem;
+  }
+  
+  .dashboard-text {
+    font-size: 1rem;
+    color: white;
+  }
+  
+  .logout-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #D32F2F;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s;
+  }
+  
+  .logout-btn:hover {
+    background-color: #B71C1C;
+  }
+  
+  .logout-icon {
+    margin-right: 5px;
+  }
+  

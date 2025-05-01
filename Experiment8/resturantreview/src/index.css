@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-50 to-gray-100;
+  }
+}
+
+@layer components {
+  .restaurant-card {
+    @apply relative bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .restaurant-card::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .restaurant-card:hover::after {
+    @apply opacity-100;
+  }
+
+  .restaurant-card:hover .restaurant-title {
+    @apply text-white relative z-10;
+  }
+
+  .restaurant-card:hover .restaurant-info {
+    @apply text-white/90 relative z-10;
+  }
+
+  .rating-star {
+    @apply w-5 h-5 text-yellow-400 transition-transform duration-300 hover:scale-110;
+  }
+
+  .review-card {
+    @apply bg-white rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-lg border border-gray-100;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+}
