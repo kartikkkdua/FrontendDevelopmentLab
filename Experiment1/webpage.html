@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple webpage showcasing all HTML tags">
+  <meta name="author" content="Your Name">
+  <title>Website</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+    }
+
+    header h1 {
+      color: #333;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #0066cc;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    blockquote {
+      padding: 10px;
+      margin-left: 20px;
+      background-color: #f4f4f4;
+      border-left: 5px solid #ccc;
+      font-style: italic;
+    }
+
+    code {
+      background-color: #f1f1f1;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    pre {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    footer {
+      background-color: #f4f4f4;
+      padding: 10px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Website</h1>
+  </header>
+
+  <nav>
+    <a href="#section1">Text Tags</a>
+    <a href="#section2">Media Tags</a>
+    <a href="#section3">Form Tags</a>
+    <a href="#section4">Table and Lists</a>
+  </nav>
+
+  <main>
+    <section id="section1">
+      <h2>Text Formatting Tags</h2>
+      <p>This is a <b>bold</b> word, this is <i>italic</i>, and this is <u>underlined</u>.</p>
+      <p><strong>Strong</strong> vs <em>emphasized</em> text.</p>
+      <p>Subscript H<sub>2</sub>O and Superscript X<sup>2</sup></p>
+      <p><mark>Highlighted text</mark> and <del>deleted</del> text.</p>
+      <blockquote>This is a blockquote.</blockquote>
+      <code>console.log('Hello World');</code>
+      <pre>
+function greet() {
+  return 'Hello';
+}
+      </pre>
+      <abbr title="World Health Organization">WHO</abbr> is an organization.
+      <address>123 Web Lane, Internet City</address>
+      <hr>
+    </section>
+
+    <section id="section2">
+      <h2>Media Tags</h2>
+      <figure>
+        <img src="data:image/png;base64,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" alt="Example Image" style="max-width: 100%; height: auto;">
+        <figcaption>Example image</figcaption>
+      </figure>
+      <audio controls>
+        <source src="example.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <video controls width="320" height="240">
+        <source src="example.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <hr>
+    </section>
+
+    <section id="section3">
+      <h2>Form Tags</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <hr>
+    </section>
+
+    <section id="section4">
+      <h2>Table and Lists</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+          </tr>
+          <tr>
+            <td>Data 3</td>
+            <td>Data 4</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+      <ol>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

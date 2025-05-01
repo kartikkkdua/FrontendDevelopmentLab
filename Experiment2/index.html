@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Portfolio</title>
+  <style>
+    :root {
+      --primary: #ff6363;
+      --secondary: #ffa600;
+      --bg: #fff9f5;
+      --text: #1e1e2f;
+      --light: #fdf6f0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark-mode {
+      --bg: #1e1e2f;
+      --text: #f0f0f0;
+      --light: #2c2c40;
+    }
+
+    header {
+      background-color: var(--light);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    .hero {
+      padding: 80px 20px;
+      text-align: center;
+      background-color: var(--primary);
+      color: white;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 20px 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #ff8c00;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: var(--light);
+      border-radius: 10px;
+    }
+
+    h2 {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 24px;
+      color: var(--primary);
+      position: relative;
+    }
+
+    .social-icons a:hover::after {
+      content: attr(title);
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: var(--light);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kartik Dua</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button class="btn" onclick="toggleDarkMode()">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Hello, I’m a Frontend Developer!</h2>
+    <p>I love crafting modern, user-focused websites.</p>
+    <a href="resume.pdf" class="btn" download>Download Resume</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I specialize in building engaging and accessible web experiences. With skills in HTML, CSS, JavaScript and React, I turn ideas into digital products.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Responsive Blog</h3>
+        <p>A clean and mobile-friendly blog layout using CSS Grid.</p>
+      </div>
+      <div class="project-card">
+        <h3>To-Do App</h3>
+        <p>A dynamic task manager with local storage.</p>
+      </div>
+      <div class="project-card">
+        <h3>Weather Dashboard</h3>
+        <p>Live weather updates using OpenWeatherMap API.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <form onsubmit="handleSubmit(event)">
+      <label>Name:</label><br>
+      <input type="text" required><br><br>
+      <label>Email:</label><br>
+      <input type="email" required><br><br>
+      <label>Message:</label><br>
+      <textarea rows="4" required></textarea><br><br>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </section>
+
+  <section class="social-icons" style="text-align:center; margin-top: 30px;">
+    <a href="#" title="GitHub">🐙</a>
+    <a href="#" title="LinkedIn">💼</a>
+    <a href="#" title="Twitter">🐦</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Your Name. Made with ❤️.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert("Thank you for reaching out!");
+    }
+  </script>
+
+</body>
+</html>

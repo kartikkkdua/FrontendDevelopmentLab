@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Contact Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #fff7f0;
+      --fg: #1e1e2f;
+      --primary: #f97316;
+      --accent: #facc15;
+      --error: #ef4444;
+      --success: #16a34a;
+      --input-bg: #fefce8;
+    }
+
+    body.dark-mode {
+      --bg: #1e1e2f;
+      --fg: #f0f0f0;
+      --input-bg: #2c2c40;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background-color: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background-color: var(--input-bg);
+      transition: all 0.3s ease;
+      color: var(--fg);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      background-color: #fff;
+    }
+
+    .error {
+      color: var(--error);
+      font-size: 0.9rem;
+      margin: -12px 0 12px;
+    }
+
+    .success {
+      color: var(--success);
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      background-color: var(--primary);
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ea580c;
+    }
+
+    .toggle-mode {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .toggle-mode button {
+      background-color: var(--accent);
+      color: #000;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-mode button:hover {
+      background-color: #fde047;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 25px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="e.g. Jane Doe">
+    <div class="error" id="nameError"></div>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="e.g. jane@example.com">
+    <div class="error" id="emailError"></div>
+
+    <label for="message">Your Message</label>
+    <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
+    <div class="error" id="messageError"></div>
+
+    <button type="submit" class="btn">Send Message</button>
+    <div class="success" id="successMessage"></div>
+  </form>
+</div>
+
+<div class="toggle-mode">
+  <button onclick="toggleTheme()">Toggle Light/Dark Mode</button>
+</div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const nameField = document.getElementById('name');
+  const emailField = document.getElementById('email');
+  const messageField = document.getElementById('message');
+  const successMessage = document.getElementById('successMessage');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    let hasError = false;
+
+    // Clear previous errors and message
+    document.getElementById('nameError').innerText = '';
+    document.getElementById('emailError').innerText = '';
+    document.getElementById('messageError').innerText = '';
+    successMessage.innerText = '';
+
+    // Validation
+    if (nameField.value.trim() === '') {
+      document.getElementById('nameError').innerText = 'Name is required.';
+      hasError = true;
+    }
+
+    const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    if (!emailPattern.test(emailField.value.trim())) {
+      document.getElementById('emailError').innerText = 'Enter a valid email.';
+      hasError = true;
+    }
+
+    if (messageField.value.trim().length < 10) {
+      document.getElementById('messageError').innerText = 'Message must be at least 10 characters.';
+      hasError = true;
+    }
+
+    if (!hasError) {
+      successMessage.innerText = '🎉 Message sent successfully!';
+      form.reset();
+    }
+  });
+
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
+
+</body>
+</html>
