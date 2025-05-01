@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat Module</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f0f0;
+      transition: background 0.3s;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      height: 90vh;
+      margin: 2rem auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      background-color: #fff;
+      position: relative;
+    }
+
+    .chat-header {
+      padding: 1rem;
+      background-color: #4a90e2;
+      color: #fff;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      color: #4a90e2;
+      border: none;
+      border-radius: 15px;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+    }
+
+    .chat-messages {
+      flex-grow: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background-color: #f9f9f9;
+    }
+
+    .message {
+      max-width: 75%;
+      margin-bottom: 1rem;
+      padding: 0.7rem 1rem;
+      border-radius: 15px;
+      position: relative;
+      word-wrap: break-word;
+    }
+
+    .sent {
+      background-color: #4a90e2;
+      color: white;
+      margin-left: auto;
+      border-bottom-right-radius: 0;
+    }
+
+    .received {
+      background-color: #e5e5ea;
+      color: #333;
+      margin-right: auto;
+      border-bottom-left-radius: 0;
+    }
+
+    .timestamp {
+      font-size: 0.7rem;
+      color: gray;
+      margin-top: 0.2rem;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 0.8rem;
+      border-top: 1px solid #ddd;
+      background-color: #fff;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      padding: 0.7rem;
+      font-size: 1rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .chat-input button {
+      margin-left: 0.5rem;
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 20px;
+      background-color: #4a90e2;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+      .chat-container {
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      .chat-header {
+        font-size: 1rem;
+      }
+    }
+
+    body.dark {
+      background-color: #1f1f1f;
+    }
+
+    body.dark .chat-container {
+      background-color: #2a2a2a;
+    }
+
+    body.dark .chat-header {
+      background-color: #333;
+    }
+
+    body.dark .chat-messages {
+      background-color: #1f1f1f;
+    }
+
+    body.dark .chat-input {
+      background-color: #2a2a2a;
+    }
+
+    body.dark .chat-input input {
+      background-color: #1f1f1f;
+      color: white;
+      border-color: #444;
+    }
+
+    body.dark .message.received {
+      background-color: #444;
+      color: white;
+    }
+
+    body.dark .toggle-theme {
+      background: #1f1f1f;
+      color: #eee;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      Simple ChatBot
+      <button class="toggle-theme" onclick="toggleTheme()">Dark/Light</button>
+    </div>
+    <div class="chat-messages" id="chat">
+        <div class="message received">Hello! How can I assist you today?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat");
+    const userInput = document.getElementById("userInput");
+
+    function appendMessage(content, type) {
+      const msg = document.createElement("div");
+      msg.classList.add("message", type);
+      msg.innerHTML = content + `<div class="timestamp">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>`;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function sendMessage() {
+      const text = userInput.value.trim();
+      if (text === "") return;
+      appendMessage(text, "sent");
+      userInput.value = "";
+
+      
+      setTimeout(() => {
+        botReply(text);
+      }, 800);
+    }
+
+    function botReply(text) {
+      const replies = [
+        "Hello! 👋",
+        "That's interesting!",
+        "Tell me more.",
+        "Can I help you with anything?",
+        "😄",
+        "Sorry, I’m just a simple bot."
+      ];
+      const reply = replies[Math.floor(Math.random() * replies.length)];
+      appendMessage(reply, "received");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+    }
+
+    
+    userInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+</body>
+</html>
